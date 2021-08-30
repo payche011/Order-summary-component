@@ -1,0 +1,198 @@
+// Colors
+
+$paleBlue: hsl(225, 100%, 94%);
+$brightBlue: hsl(245, 75%, 52%);
+$veryPaleBlue: hsl(225, 100%, 98%);
+$white: #fff;
+$grayBlue: hsl(224, 23%, 55%);
+$darkBlue: hsl(223, 47%, 23%);
+$medium-weight: 500;
+$semibold-weight: 700;
+$bold-weight: 900;
+$transition: 0.3s all;
+
+// Reset
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Red Hat Display", sans-serif;
+  line-height: 1.5;
+  background: $paleBlue;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: inherit;
+  font-weight: $semibold-weight;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+
+  &--blue {
+    background: $brightBlue;
+    color: $white;
+    margin-bottom: 1rem;
+    -webkit-box-shadow: 0px 10px 13px -7px $grayBlue,
+      5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px $grayBlue, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    transition: $transition;
+    &:hover {
+      background: lighten($brightBlue, 10%);
+    }
+  }
+
+  &--transparent {
+    background: transparent;
+    color: #acb6d5;
+    transition: $transition;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+// Styles
+.wrapper {
+  display: grid;
+  place-content: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  @media (max-width: 1440px) {
+    background: url(/images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 375px) {
+    background: url(/images/pattern-background-mobile.svg);
+    background-repeat: no-repeat;
+  }
+  & .order {
+    // width: clamp(35rem, calc(35rem + ((1vw - 0.203125rem) * 21.5247)), 50rem);
+    // height: clamp(700px, calc(43.75rem + ((1vw - 3.25px) * 26.9058)), 1000px);
+    min-height: 0vw;
+    border-radius: 2rem;
+    background: $white;
+    overflow: hidden;
+
+    &__top > img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    &__bottom {
+      display: grid;
+      place-content: center;
+      justify-content: center;
+      grid-template-columns: 1fr;
+      padding: 4rem 4rem 3rem 4rem;
+
+      @media (max-width: 32rem) {
+        padding: 2rem;
+      }
+
+      &--heading {
+        font-size: clamp(
+          2.0625rem,
+          calc(2.0625rem + ((1vw - 0.203125rem) * 0.8072)),
+          2.625rem
+        );
+        text-align: center;
+        color: $darkBlue;
+        font-weight: $bold-weight;
+      }
+
+      &--text {
+        font-weight: $medium-weight;
+        font-size: clamp(
+          1rem,
+          calc(1rem + ((1vw - 0.203125rem) * 0.7175)),
+          1.5rem
+        );
+        max-width: 30ch;
+        color: #acb6d5;
+        text-align: center;
+        margin: 0 auto;
+        padding: 1.7rem 0 1.5rem 0;
+      }
+
+      &--plan {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: $veryPaleBlue;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-bottom: 1.7rem;
+      }
+
+      & .annual__plan {
+        flex: 0 0 50%;
+        &--heading {
+          font-size: clamp(
+            1rem,
+            calc(1rem + ((1vw - 0.203125rem) * 0.574)),
+            1.4rem
+          );
+        }
+
+        &--text {
+          font-size: clamp(
+            1rem,
+            calc(1rem + ((1vw - 0.203125rem) * 0.574)),
+            1.4rem
+          );
+          color: #acb6d5;
+        }
+
+        &--link {
+          color: $brightBlue;
+          text-decoration: underline;
+          font-weight: $semibold-weight;
+          font-size: clamp(
+            1rem,
+            calc(1rem + ((1vw - 0.203125rem) * 0.574)),
+            1.4rem
+          );
+          transition: $transition;
+          cursor: pointer;
+          &:hover {
+            text-decoration: none;
+            color: lighten($brightBlue, 10%);
+          }
+        }
+      }
+    }
+  }
+}
